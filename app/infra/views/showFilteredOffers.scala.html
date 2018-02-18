@@ -1,0 +1,16 @@
+@(maybeErrorMessage: Option[String], offers: Map[java.lang.String, core.domain.offer.Offer])
+
+@main("Worldpay") {
+
+<div class="container">
+
+    @maybeErrorMessage.map { errorMessage =>
+        <span class="error text-danger">@errorMessage</span>
+        <br/>
+    }
+
+    @if(offers.nonEmpty) {
+        @offersTable(offers)
+    }
+</div>
+}

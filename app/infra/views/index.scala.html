@@ -1,0 +1,35 @@
+@(offers: Map[java.lang.String, core.domain.offer.Offer])
+
+@main("Worldpay") {
+
+<div class="container">
+
+    <h3>Worldpay</h3>
+    <div class="jumbotron">
+        <h1>Hello, Merchant!</h1>
+        <p class="leo">This is a tool for sharing offers with your clients.</p>
+        <p>
+            <a href="/offers" class="btn btn-primary btn-large">
+                Add Offer
+            </a>
+        </p>
+    </div>
+
+    <div>
+        <form action="@routes.Application.search()" method="POST" class="navbar-search pull-right">
+            <input id="search" name="search" type="text" class="search-query" placeholder="Search...">
+        </form>
+    </div>
+
+    @if(offers.nonEmpty) {
+        @offersTable(offers)
+
+    } else {
+        <div class="alert alert-info col-md-4" align="left">
+            <strong>No offers, yet! Please add an offer.</strong>
+        </div>
+    }
+
+</div>
+
+}

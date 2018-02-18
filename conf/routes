@@ -1,0 +1,14 @@
+GET     /                           controllers.Application.index()
+
++ nocsrf
+POST    /cancel                     controllers.Application.cancel(id: String)
+
++ nocsrf
+POST    /search                     controllers.Application.search()
+
+GET     /offers                     controllers.Application.offers()
+
++ nocsrf
+POST    /offers                     controllers.Application.addOffer()
+
+GET  /assets/*file   controllers.Assets.at(path="/public", file)

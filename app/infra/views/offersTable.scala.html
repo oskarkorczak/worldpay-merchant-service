@@ -1,0 +1,40 @@
+@(offers: Map[java.lang.String, core.domain.offer.Offer])
+
+<fieldset>
+    <div class="col-md-8">
+        <h2>Offers</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Currency</th>
+                <th>Expires at</th>
+                <th>Validity status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(o <- offers) {
+            <tr>
+                <td>@o._2.desc</td>
+                <td>@o._2.price</td>
+                <td>@o._2.currency</td>
+                <td>@o._2.formattedExpiryTime</td>
+                @if(o._2.isValid()) {
+                <td><span class="glyphicon glyphicon-ok"/></td>
+                <td>
+                    <form action="@routes.Application.cancel(o._2.id)" method="POST">
+                        <button type="submit" name="Cancel" class="btn btn-outline-secondary">Cancel</button>
+                    </form>
+                </td>
+                } else {
+                <td><span class="glyphicon glyphicon-remove"/></td>
+                <td></td>
+                }
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</fieldset>

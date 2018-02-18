@@ -1,0 +1,47 @@
+@(maybeErrorMessage: Option[Form[infra.model.OfferModel]], currencies: _root_.core.domain.Currency.ValueSet, timeUnits: _root_.core.domain.time.TimeUnit.ValueSet)
+
+@main("Worldpay") {
+
+<div class="container">
+    <form class="navbar-form pull-left" method="post" action="/offers">
+        <fieldset>
+            <div class="navbar-form pull-left">
+                <legend>Add Offer</legend>
+                @maybeErrorMessage.map { errorMessage =>
+                    @errorMessage.errors.map(formError =>
+                        <span class="error text-danger">{formError.key} field {formError.message}</span>
+                        <br/>
+                    )
+                }
+                <p>
+                    <label for="description">Desc:</label>
+                    <input id="description" class="span2" type="text" name="description" />
+                </p>
+                <p>
+                    <label for="price">Price:</label>
+                    <input id="price" class="span2" type="text" name="price" />
+                    <select id="currency" class="span2" name="currency">
+                        <option class="span2" value=""/>
+                        @for(ccy <- currencies) {
+                            <option class="span2" value="@ccy">@ccy</option>
+                        }
+                    </select>
+                </p>
+                <p>
+                    <label for="valid">Valid:</label>
+                    <input id="valid" class="span2" type="text" name="valid" />
+                    <select id="timeUnit" class="span2" name="timeUnit" >
+                        <option class="span2" value=""/>
+                        @for(time <- timeUnits) {
+                            <option class="span2" value="@time">@time</option>
+                        }
+                    </select>
+                </p>
+                <button type="submit" name="Submit" class="btn btn-primary btn-large">Submit</button>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+}

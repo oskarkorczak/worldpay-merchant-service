@@ -1,0 +1,23 @@
+@(title: String)(content: Html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/bootstrap.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script type="text/javascript" src="@routes.Assets.at("js/bootstrap.min.js")"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+    @content
+
+</body>
+</html>
